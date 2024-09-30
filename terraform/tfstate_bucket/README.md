@@ -33,7 +33,9 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.69.0 |
 
 ## Modules
 
@@ -41,7 +43,10 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_kms_alias.tfstate_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
+| [aws_kms_key.tfstate_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
 
 ## Inputs
 
