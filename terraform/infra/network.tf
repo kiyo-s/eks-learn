@@ -17,3 +17,28 @@ resource "aws_subnet" "public" {
     Name = "${local.name}-public-${reverse(split("-", each.value.az))[0]}"
   }
 }
+
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+}
+
+resource "aws_eip" "nat_gateway" {
+  for_each = { for p in var.public_subnet_configs : p.az => p }
+
+  domain = "vpc"
+
+  tags = {
+    Name = "${local.name}-ng-${reverse(split("-", each.value.az))[0]}"
+  }
+}
+
+resource "aws_nat_gateway" "main" {
+  for_each = { for p in var.public_subnet_configs : p.az => p }
+
+  allocation_id = aws_eip.nat_gateway[each.key].id
+  subnet_id     = aws_subnet.public[each.key].id
+
+  tags = {
+    Name = "${local.name}-${reverse(split("-", each.value.az))[0]}"
+  }
+}
