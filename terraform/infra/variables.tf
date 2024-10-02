@@ -15,3 +15,23 @@ variable "vpc_cidr_block" {
   type        = string
   default     = "172.16.0.0/16"
 }
+
+variable "public_subnet_configs" {
+  description = <<EOT
+パブリックサブネットの CIDR ブロックを指定してください。
+EOT
+  type = list(object({
+    cidr_block = string
+    az         = string
+  }))
+  default = [
+    {
+      cidr_block = "172.16.0.0/24",
+      az         = "ap-northeast-1a"
+    },
+    {
+      cidr_block = "172.16.1.0/24",
+      az         = "ap-northeast-3a"
+    },
+  ]
+}
