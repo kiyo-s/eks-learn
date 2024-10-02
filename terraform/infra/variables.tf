@@ -8,3 +8,10 @@ variable "region" {
   type        = string
   default     = "ap-northeast-1"
 }
+
+// Network
+variable "vpc_cidr_block" {
+  description = "VPC の CIDR ブロックを指定してください。"
+  type        = string
+  default     = "172.16.0.0/16"
+}

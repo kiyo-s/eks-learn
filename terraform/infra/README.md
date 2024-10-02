@@ -32,7 +32,9 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.69.0 |
 
 ## Modules
 
@@ -40,7 +42,9 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
 
 ## Inputs
 
@@ -48,6 +52,7 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_env"></a> [env](#input\_env) | 環境を識別する文字列を指定してください。 | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | リソースを作成する AWS のリージョンを指定してください。 | `string` | `"ap-northeast-1"` | no |
+| <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | VPC の CIDR ブロックを指定してください。 | `string` | `"172.16.0.0/16"` | no |
 
 ## Outputs
 
