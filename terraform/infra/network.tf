@@ -76,3 +76,28 @@ resource "aws_subnet" "private" {
     Name = "${local.name}-private-${reverse(split("-", each.value.az))[0]}"
   }
 }
+
+resource "aws_route_table" "private" {
+  for_each = { for p in var.private_subnet_configs : p.az => p }
+
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${local.name}-private-${reverse(split("-", each.value.az))[0]}"
+  }
+}
+
+resource "aws_route" "private_to_nat_gateway" {
+  for_each = { for p in var.private_subnet_configs : p.az => p }
+
+  route_table_id         = aws_route_table.private[each.value.az].id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_nat_gateway.main[each.value.az].id
+}
+
+resource "aws_route_table_association" "private" {
+  for_each = { for p in var.private_subnet_configs : p.az => p }
+
+  subnet_id      = aws_subnet.private[each.key].id
+  route_table_id = aws_route_table.private[each.key].id
+}
