@@ -14,7 +14,8 @@ resource "aws_subnet" "public" {
   availability_zone = each.value.az
 
   tags = {
-    Name = "${local.name}-public-${reverse(split("-", each.value.az))[0]}"
+    Name                     = "${local.name}-public-${reverse(split("-", each.value.az))[0]}"
+    "kubernetes.io/role/elb" = "1"
   }
 }
 
@@ -73,7 +74,8 @@ resource "aws_subnet" "private" {
   availability_zone = each.value.az
 
   tags = {
-    Name = "${local.name}-private-${reverse(split("-", each.value.az))[0]}"
+    Name                              = "${local.name}-private-${reverse(split("-", each.value.az))[0]}"
+    "kubernetes.io/role/internal-elb" = "1"
   }
 }
 
