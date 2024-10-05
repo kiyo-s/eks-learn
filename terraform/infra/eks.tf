@@ -9,7 +9,6 @@ resource "aws_eks_cluster" "main" {
     endpoint_private_access = false
     endpoint_public_access  = true
     public_access_cidrs     = var.eks_cluster_access_cidrs
-    vpc_id                  = aws_vpc.main.id
   }
 
   access_config {
