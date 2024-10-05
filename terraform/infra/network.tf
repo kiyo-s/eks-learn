@@ -63,3 +63,16 @@ resource "aws_route_table_association" "public" {
   subnet_id      = aws_subnet.public[each.key].id
   route_table_id = aws_route_table.public.id
 }
+
+// Private Subnet
+resource "aws_subnet" "private" {
+  for_each = { for p in var.private_subnet_configs : p.az => p }
+
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = each.value.cidr_block
+  availability_zone = each.value.az
+
+  tags = {
+    Name = "${local.name}-private-${reverse(split("-", each.value.az))[0]}"
+  }
+}

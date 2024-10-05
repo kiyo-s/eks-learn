@@ -35,3 +35,23 @@ EOT
     },
   ]
 }
+
+variable "private_subnet_configs" {
+  description = <<EOT
+プライベートサブネットの CIDR ブロックを指定してください。
+EOT
+  type = list(object({
+    cidr_block = string
+    az         = string
+  }))
+  default = [
+    {
+      cidr_block = "172.16.2.0/23",
+      az         = "ap-northeast-1a"
+    },
+    {
+      cidr_block = "172.16.4.0/23",
+      az         = "ap-northeast-1c"
+    },
+  ]
+}
