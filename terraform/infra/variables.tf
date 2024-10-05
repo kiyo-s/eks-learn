@@ -55,3 +55,11 @@ EOT
     },
   ]
 }
+
+// EKS
+variable "eks_cluster_access_cidrs" {
+  description = <<EOT
+EKS クラスタの API Server にアクセス可能な CIDR ブロックを配列で指定してください。
+EOT
+  type        = list(string)
+}
