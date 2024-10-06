@@ -38,7 +38,9 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_eks_node_group_system"></a> [eks\_node\_group\_system](#module\_eks\_node\_group\_system) | ./modules/managed_nodegroup | n/a |
 
 ## Resources
 
@@ -72,8 +74,11 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | EKS ノードで使用する AMI ID を指定してください。 | `string` | `"ami-082334f38f661d103"` | no |
 | <a name="input_eks_cluster_access_cidrs"></a> [eks\_cluster\_access\_cidrs](#input\_eks\_cluster\_access\_cidrs) | EKS クラスタの API Server にアクセス可能な CIDR ブロックを配列で指定してください。 | `list(string)` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | 環境を識別する文字列を指定してください。 | `string` | n/a | yes |
+| <a name="input_max_unavailable_percentage"></a> [max\_unavailable\_percentage](#input\_max\_unavailable\_percentage) | EKS ノードのアップデート時に許容する最大のアンアベイラビリティを指定してください。 | `number` | `10` | no |
+| <a name="input_node_resources_system"></a> [node\_resources\_system](#input\_node\_resources\_system) | EKS ノードのリソースを指定してください。 | <pre>object({<br/>    instance_type = string<br/>    min_size      = number<br/>    max_size      = number<br/>    desired_size  = number<br/>  })</pre> | <pre>{<br/>  "desired_size": 1,<br/>  "instance_type": "m7i-flex.large",<br/>  "max_size": 5,<br/>  "min_size": 0<br/>}</pre> | no |
 | <a name="input_private_subnet_configs"></a> [private\_subnet\_configs](#input\_private\_subnet\_configs) | プライベートサブネットの CIDR ブロックを指定してください。 | <pre>list(object({<br/>    cidr_block = string<br/>    az         = string<br/>  }))</pre> | <pre>[<br/>  {<br/>    "az": "ap-northeast-1a",<br/>    "cidr_block": "172.16.2.0/23"<br/>  },<br/>  {<br/>    "az": "ap-northeast-1c",<br/>    "cidr_block": "172.16.4.0/23"<br/>  }<br/>]</pre> | no |
 | <a name="input_public_subnet_configs"></a> [public\_subnet\_configs](#input\_public\_subnet\_configs) | パブリックサブネットの CIDR ブロックを指定してください。 | <pre>list(object({<br/>    cidr_block = string<br/>    az         = string<br/>  }))</pre> | <pre>[<br/>  {<br/>    "az": "ap-northeast-1a",<br/>    "cidr_block": "172.16.0.0/24"<br/>  },<br/>  {<br/>    "az": "ap-northeast-1c",<br/>    "cidr_block": "172.16.1.0/24"<br/>  }<br/>]</pre> | no |
 | <a name="input_region"></a> [region](#input\_region) | リソースを作成する AWS のリージョンを指定してください。 | `string` | `"ap-northeast-1"` | no |
