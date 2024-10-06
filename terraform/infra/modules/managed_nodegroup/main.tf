@@ -63,7 +63,9 @@ resource "aws_launch_template" "main" {
   }
 
   network_interfaces {
-    security_groups = aws_security_group.main.id
+    security_groups = [
+      aws_security_group.main.id
+    ]
   }
 
   tag_specifications {
