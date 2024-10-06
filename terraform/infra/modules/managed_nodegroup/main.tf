@@ -19,15 +19,6 @@ resource "aws_iam_role" "main" {
   }
 }
 
-resource "aws_iam_instance_profile" "main" {
-  name = "${var.resource_name_prefix}-managed-nodegroup"
-  role = aws_iam_role.main.name
-
-  tags = {
-    Name = "${var.resource_name_prefix}-managed-nodegroup"
-  }
-}
-
 // Security Group
 resource "aws_security_group" "main" {
   name   = "${var.resource_name_prefix}-managed-nodegroup"
@@ -42,12 +33,8 @@ resource "aws_security_group" "main" {
 resource "aws_launch_template" "main" {
   name = "${var.resource_name_prefix}-managed-nodegroup"
 
-  iam_instance_profile {
-    name = aws_iam_instance_profile.main.name
-  }
-
   image_id      = var.ami_id
-  instance_type = var.instance_type
+  instance_type = var.node_resources.instance_type
 
   metadata_options {
     http_endpoint               = true

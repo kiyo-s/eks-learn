@@ -21,7 +21,6 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_eks_node_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_node_group) | resource |
-| [aws_iam_instance_profile.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_role.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_launch_template.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
 | [aws_security_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
@@ -32,7 +31,6 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | EKS ノードで使用する AMI ID を指定してください。 | `string` | n/a | yes |
 | <a name="input_eks_cluster_name"></a> [eks\_cluster\_name](#input\_eks\_cluster\_name) | EKS クラスタの名前を指定してください。 | `string` | n/a | yes |
-| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EKS ノードで使用するインスタンスタイプを指定してください。 | `string` | n/a | yes |
 | <a name="input_is_enabled_cluster_autoscaler"></a> [is\_enabled\_cluster\_autoscaler](#input\_is\_enabled\_cluster\_autoscaler) | EKS クラスタのオートスケーラーを有効にするかどうかを指定してください。 | `bool` | `false` | no |
 | <a name="input_k8s_node_labels"></a> [k8s\_node\_labels](#input\_k8s\_node\_labels) | EKS ノードに付与する Kubernetes ノードラベルを指定してください。 | `map(string)` | `null` | no |
 | <a name="input_max_unavailable_percentage"></a> [max\_unavailable\_percentage](#input\_max\_unavailable\_percentage) | EKS ノードのアップデート時に許容する最大のアンアベイラビリティを指定してください。 | `number` | `10` | no |

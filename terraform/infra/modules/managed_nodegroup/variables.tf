@@ -9,17 +9,6 @@ variable "tags" {
   type        = map(string)
 }
 
-// IAM
-variable "ami_id" {
-  description = "EKS ノードで使用する AMI ID を指定してください。"
-  type        = string
-}
-
-variable "instance_type" {
-  description = "EKS ノードで使用するインスタンスタイプを指定してください。"
-  type        = string
-}
-
 // Network
 variable "vpc_id" {
   description = "EKS ノードを配置する VPC の ID を指定してください。"
@@ -34,6 +23,11 @@ variable "subnet_ids" {
 // EKS
 variable "eks_cluster_name" {
   description = "EKS クラスタの名前を指定してください。"
+  type        = string
+}
+
+variable "ami_id" {
+  description = "EKS ノードで使用する AMI ID を指定してください。"
   type        = string
 }
 
