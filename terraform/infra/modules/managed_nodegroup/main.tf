@@ -102,9 +102,7 @@ resource "aws_eks_node_group" "main" {
 
   labels = merge(
     var.k8s_node_labels,
-    {
-      "k8s.io/cluster-autoscaler/enabled" = "true",
-    }
+    var.is_enabled_cluster_autoscaler ? { "k8s.io/cluster-autoscaler/enabled" = "true" } : {}
   )
 
   tags = var.tags
