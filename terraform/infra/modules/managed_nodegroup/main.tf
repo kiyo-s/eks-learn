@@ -83,3 +83,42 @@ resource "aws_launch_template" "main" {
     Name = "${var.resource_name_prefix}-managed-nodegroup"
   }
 }
+
+// Managed Node Group
+resource "aws_eks_node_group" "main" {
+  cluster_name    = var.eks_cluster_name
+  node_group_name = var.resource_name_prefix
+
+  node_role_arn = aws_iam_role.main.arn
+  subnet_ids    = var.subnet_ids
+
+  launch_template {
+    name    = aws_launch_template.main.name
+    version = aws_launch_template.main.latest_version
+  }
+
+  scaling_config {
+    desired_size = var.node_resources.desired_size
+    max_size     = var.node_resources.max_size
+    min_size     = var.node_resources.min_size
+  }
+
+  update_config {
+    max_unavailable_percentage = var.max_unavailable_percentage
+  }
+
+  timeouts {
+    create = var.operational_timeout
+    delete = var.operational_timeout
+    update = var.operational_timeout
+  }
+
+  labels = merge(
+    var.k8s_node_labels,
+    {
+      "k8s.io/cluster-autoscaler/enabled" = "true",
+    }
+  )
+
+  tags = var.tags
+}
