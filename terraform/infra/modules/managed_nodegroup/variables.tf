@@ -34,10 +34,10 @@ variable "ami_id" {
 variable "node_resources" {
   description = "EKS ノードのリソースを指定してください。"
   type = object({
-    instance_type    = string
-    min_size         = number
-    max_size         = number
-    desired_capacity = number
+    instance_type = string
+    min_size      = number
+    max_size      = number
+    desired_size  = number
   })
 }
 

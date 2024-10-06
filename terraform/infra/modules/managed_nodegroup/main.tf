@@ -37,7 +37,7 @@ resource "aws_launch_template" "main" {
   instance_type = var.node_resources.instance_type
 
   metadata_options {
-    http_endpoint               = true
+    http_endpoint               = "enabled"
     http_tokens                 = "required"
     http_put_response_hop_limit = 2
   }
