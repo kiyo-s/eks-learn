@@ -40,5 +40,5 @@ module "irsa_cluster_autoscaler" {
   role_name                     = "${local.name}-irsa-cluster-autoscaler"
   provider_url                  = aws_eks_cluster.main.identity[0].oidc[0].issuer
   role_policy_arns              = [aws_iam_policy.cluster_autoscaler.arn]
-  oidc_fully_qualified_subjects = ["system:serviceaccount:cluster-autoscaler:cluster-autoscaler"]
+  oidc_fully_qualified_subjects = ["system:serviceaccount:cluster-autoscaler:cluster-autoscaler-aws-cluster-autoscaler"]
 }
