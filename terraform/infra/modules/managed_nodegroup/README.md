@@ -11,6 +11,7 @@
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 5.70.0 |
+| <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | n/a |
 
 ## Modules
 
@@ -28,13 +29,22 @@ No modules.
 | [aws_iam_role_policy_attachment.ssm_managed_ec2_instance_default_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_launch_template.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
 | [aws_security_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group_rule.egress_all](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.eks_cluster_ingress_eks_node_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_from_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [cloudinit_config.eks_node_group](https://registry.terraform.io/providers/hashicorp/cloudinit/latest/docs/data-sources/config) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | EKS ノードで使用する AMI ID を指定してください。 | `string` | n/a | yes |
+| <a name="input_cluster_ca"></a> [cluster\_ca](#input\_cluster\_ca) | EKS クラスタの CA データを指定してください。 | `string` | n/a | yes |
+| <a name="input_cluster_cidr"></a> [cluster\_cidr](#input\_cluster\_cidr) | EKS クラスタの CIDR を指定してください。 | `string` | n/a | yes |
+| <a name="input_cluster_endpoint"></a> [cluster\_endpoint](#input\_cluster\_endpoint) | EKS クラスタのエンドポイントを指定してください。 | `string` | n/a | yes |
 | <a name="input_eks_cluster_name"></a> [eks\_cluster\_name](#input\_eks\_cluster\_name) | EKS クラスタの名前を指定してください。 | `string` | n/a | yes |
+| <a name="input_eks_cluster_security_group_id"></a> [eks\_cluster\_security\_group\_id](#input\_eks\_cluster\_security\_group\_id) | EKS クラスタのセキュリティグループ ID を指定してください。 | `string` | n/a | yes |
 | <a name="input_is_enabled_cluster_autoscaler"></a> [is\_enabled\_cluster\_autoscaler](#input\_is\_enabled\_cluster\_autoscaler) | EKS クラスタのオートスケーラーを有効にするかどうかを指定してください。 | `bool` | `false` | no |
 | <a name="input_k8s_node_labels"></a> [k8s\_node\_labels](#input\_k8s\_node\_labels) | EKS ノードに付与する Kubernetes ノードラベルを指定してください。 | `map(string)` | `null` | no |
 | <a name="input_max_unavailable_percentage"></a> [max\_unavailable\_percentage](#input\_max\_unavailable\_percentage) | EKS ノードのアップデート時に許容する最大のアンアベイラビリティを指定してください。 | `number` | `10` | no |
