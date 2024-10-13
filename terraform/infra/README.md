@@ -30,12 +30,14 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.71.0 |
 | <a name="requirement_cloudinit"></a> [cloudinit](#requirement\_cloudinit) | 2.3.5 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | 4.0.6 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 5.71.0 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | 4.0.6 |
 
 ## Modules
 
@@ -51,6 +53,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_eks_access_entry.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_entry) | resource |
 | [aws_eks_access_policy_association.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_policy_association) | resource |
 | [aws_eks_cluster.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_cluster) | resource |
+| [aws_iam_openid_connect_provider.eks](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/iam_openid_connect_provider) | resource |
 | [aws_iam_role.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_cluster_policy](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_service_policy](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/iam_role_policy_attachment) | resource |
@@ -70,6 +73,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/vpc) | resource |
 | [aws_iam_policy_document.eks_cluster_assume_role](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_roles.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/iam_roles) | data source |
+| [tls_certificate.eks](https://registry.terraform.io/providers/hashicorp/tls/4.0.6/docs/data-sources/certificate) | data source |
 
 ## Inputs
 
