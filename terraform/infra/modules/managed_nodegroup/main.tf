@@ -138,7 +138,7 @@ resource "aws_eks_node_group" "main" {
   ]
 
   cluster_name    = var.eks_cluster_name
-  node_group_name = var.resource_name_prefix
+  node_group_name = var.node_group_name
 
   node_role_arn = aws_iam_role.main.arn
   subnet_ids    = var.subnet_ids
