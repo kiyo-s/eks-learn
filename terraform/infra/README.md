@@ -44,7 +44,8 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_eks_node_group_system"></a> [eks\_node\_group\_system](#module\_eks\_node\_group\_system) | ./modules/managed_nodegroup | n/a |
-| <a name="module_irsa_vpc_cni"></a> [irsa\_vpc\_cni](#module\_irsa\_vpc\_cni) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.44.0 |
+| <a name="module_irsa_kube_proxy"></a> [irsa\_kube\_proxy](#module\_irsa\_kube\_proxy) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
+| <a name="module_irsa_vpc_cni"></a> [irsa\_vpc\_cni](#module\_irsa\_vpc\_cni) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
 
 ## Resources
 
@@ -53,6 +54,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_eip.nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eip) | resource |
 | [aws_eks_access_entry.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_entry) | resource |
 | [aws_eks_access_policy_association.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_policy_association) | resource |
+| [aws_eks_addon.kube_proxy](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_addon) | resource |
 | [aws_eks_addon.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_addon) | resource |
 | [aws_eks_cluster.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_cluster) | resource |
 | [aws_iam_openid_connect_provider.eks](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/iam_openid_connect_provider) | resource |
