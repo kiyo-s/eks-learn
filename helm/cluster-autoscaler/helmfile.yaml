@@ -3,15 +3,15 @@ environments:
 
 repositories:
   - name: autoscaler
-    uri: https://kubernetes.github.io/autoscaler
+    url: https://kubernetes.github.io/autoscaler
 
 releases:
   - name: cluster-autoscaler
     namespace: cluster-autoscaler
     createNamespace: true
     chart: autoscaler/cluster-autoscaler
-    version: cluster-autoscaler-chart-9.43.0
+    version: 9.43.0
     atomic: true
     values:
       - common/values.yaml
-      - {{ .Environment.Name }}/values.yaml
+      - "{{ .Environment.Name }}/values.yaml"
