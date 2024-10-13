@@ -1,0 +1,108 @@
+autoDiscovery:
+  clusterName: cluster.local
+
+  # autoDiscovery.tags -- ASG tags to match, run through `tpl`.
+  tags:
+    - k8s.io/cluster-autoscaler/enabled
+    - k8s.io/cluster-autoscaler/{{ .Values.autoDiscovery.clusterName }}
+
+# awsRegion -- AWS region (required if `cloudProvider=aws`)
+awsRegion: ap-northeast-1
+
+# cloudProvider -- The cloud provider where the autoscaler runs.
+# Currently only `gce`, `aws`, `azure`, `magnum` and `clusterapi` are supported.
+# `aws` supported for AWS. `gce` for GCE. `azure` for Azure AKS.
+# `magnum` for OpenStack Magnum, `clusterapi` for Cluster API.
+cloudProvider: aws
+
+image:
+  # image.repository -- Image repository
+  repository: registry.k8s.io/autoscaling/cluster-autoscaler
+  # image.tag -- Image tag
+  tag: v1.31.0
+  # image.pullPolicy -- Image pull policy
+  pullPolicy: IfNotPresent
+
+# nodeSelector -- Node labels for pod assignment. Ref: https://kubernetes.io/docs/user-guide/node-selection/.
+nodeSelector:
+  - eks.amazonaws.com/nodegroup: system
+
+# podDisruptionBudget -- Pod disruption budget.
+podDisruptionBudget:
+  maxUnavailable: 1
+
+# priorityClassName -- priorityClassName
+priorityClassName: "system-cluster-critical"
+
+## Custom PrometheusRule to be defined
+## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
+## ref: https://github.com/coreos/prometheus-operator#customresourcedefinitions
+prometheusRule:
+  # prometheusRule.enabled -- If true, creates a Prometheus Operator PrometheusRule.
+  enabled: false
+  # prometheusRule.namespace -- Namespace which Prometheus is running in.
+  namespace: prometheus
+  # prometheusRule.interval -- How often rules in the group are evaluated (falls back to `global.evaluation_interval` if not set).
+  interval: 30s
+  # prometheusRule.rules -- Rules spec template (see https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule).
+  rules: []
+
+rbac:
+  # rbac.create -- If `true`, create and use RBAC resources.
+  create: true
+  # rbac.clusterScoped -- if set to false will only provision RBAC to alter resources in the current namespace. Most useful for Cluster-API
+  clusterScoped: true
+  serviceAccount:
+    # rbac.serviceAccount.annotations -- Additional Service Account annotations.
+    annotations: {}
+    # rbac.serviceAccount.create -- If `true` and `rbac.create` is also true, a Service Account will be created.
+    create: true
+    # rbac.serviceAccount.automountServiceAccountToken -- Automount API credentials for a Service Account.
+    automountServiceAccountToken: true
+
+# replicaCount -- Desired number of pods
+replicaCount: 1
+
+# resources -- Pod resource requests and limits.
+resources:
+  limits:
+    cpu: 100m
+    memory: 300Mi
+  requests:
+    cpu: 100m
+    memory: 300Mi
+
+# revisionHistoryLimit -- The number of revisions to keep.
+revisionHistoryLimit: 10
+
+# securityContext -- [Security context for pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+securityContext: {}
+  # runAsNonRoot: true
+  # runAsUser: 65534
+  # runAsGroup: 65534
+  # seccompProfile:
+  #    type: RuntimeDefault
+
+## Are you using Prometheus Operator?
+serviceMonitor:
+  # serviceMonitor.enabled -- If true, creates a Prometheus Operator ServiceMonitor.
+  enabled: false
+  # serviceMonitor.interval -- Interval that Prometheus scrapes Cluster Autoscaler metrics.
+  interval: 10s
+  # serviceMonitor.namespace -- Namespace which Prometheus is running in.
+  namespace: monitoring
+  ## [Prometheus Selector Label](https://github.com/helm/charts/tree/master/stable/prometheus-operator#prometheus-operator-1)
+  ## [Kube Prometheus Selector Label](https://github.com/helm/charts/tree/master/stable/prometheus-operator#exporters)
+  # serviceMonitor.selector -- Default to kube-prometheus install (CoreOS recommended), but should be set according to Prometheus install.
+  selector:
+    release: prometheus-operator
+  # serviceMonitor.path -- The path to scrape for metrics; autoscaler exposes `/metrics` (this is standard)
+  path: /metrics
+  # serviceMonitor.annotations -- Annotations to add to service monitor
+  annotations: {}
+  ## [RelabelConfig](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.RelabelConfig)
+  # serviceMonitor.relabelings -- RelabelConfigs to apply to metrics before scraping.
+  relabelings: {}
+  ## [RelabelConfig](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.RelabelConfig)
+  # serviceMonitor.metricRelabelings -- MetricRelabelConfigs to apply to samples before ingestion.
+  metricRelabelings: {}
