@@ -1,7 +1,7 @@
 module "eks_node_group_system" {
   source = "./modules/managed_nodegroup"
 
-  resource_name_prefix = local.name
+  resource_name_prefix = "system"
   tags                 = local.default_tags
 
   vpc_id     = aws_vpc.main.id
