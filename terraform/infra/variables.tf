@@ -55,3 +55,39 @@ EOT
     },
   ]
 }
+
+// EKS
+variable "eks_cluster_access_cidrs" {
+  description = <<EOT
+EKS クラスタの API Server にアクセス可能な CIDR ブロックを配列で指定してください。
+EOT
+  type        = list(string)
+}
+
+variable "ami_id" {
+  description = "EKS ノードで使用する AMI ID を指定してください。"
+  type        = string
+  default     = "ami-082334f38f661d103"
+}
+
+variable "node_resources_system" {
+  description = "EKS ノードのリソースを指定してください。"
+  type = object({
+    instance_type = string
+    min_size      = number
+    max_size      = number
+    desired_size  = number
+  })
+  default = {
+    instance_type = "m7i-flex.large"
+    min_size      = 0
+    max_size      = 5
+    desired_size  = 1
+  }
+}
+
+variable "max_unavailable_percentage" {
+  description = "EKS ノードのアップデート時に許容する最大のアンアベイラビリティを指定してください。"
+  type        = number
+  default     = 10
+}
