@@ -122,10 +122,7 @@ resource "aws_eks_node_group" "main" {
     update = var.operational_timeout
   }
 
-  labels = merge(
-    var.k8s_node_labels,
-    var.is_enabled_cluster_autoscaler ? { "k8s.io/cluster-autoscaler/enabled" = "true" } : {}
-  )
+  labels = var.k8s_node_labels
 
   tags = var.tags
 }
