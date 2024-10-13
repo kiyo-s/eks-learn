@@ -49,12 +49,41 @@ resource "aws_security_group" "main" {
   }
 }
 
+resource "aws_security_group_rule" "ingress_self" {
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  security_group_id = aws_security_group.main.id
+  self              = true
+}
+
+resource "aws_security_group_rule" "egress_all" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  security_group_id = aws_security_group.main.id
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+
+resource "aws_security_group_rule" "eks_cluster_ingress_eks_node_group" {
+  type                     = "ingress"
+  from_port                = 443
+  to_port                  = 443
+  protocol                 = "tcp"
+  security_group_id        = var.eks_cluster_security_group_id
+  source_security_group_id = aws_security_group.main.id
+}
+
 // Launch Template
 resource "aws_launch_template" "main" {
   name = "${var.resource_name_prefix}-managed-nodegroup"
 
   image_id      = var.ami_id
   instance_type = var.node_resources.instance_type
+
+  user_data = data.cloudinit_config.eks_node_group.rendered
 
   metadata_options {
     http_endpoint               = "enabled"
@@ -95,6 +124,10 @@ resource "aws_launch_template" "main" {
 
 // Managed Node Group
 resource "aws_eks_node_group" "main" {
+  depends_on = [
+    aws_security_group_rule.eks_cluster_ingress_eks_node_group,
+  ]
+
   cluster_name    = var.eks_cluster_name
   node_group_name = var.resource_name_prefix
 

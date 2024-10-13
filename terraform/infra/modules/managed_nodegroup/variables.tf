@@ -26,6 +26,26 @@ variable "eks_cluster_name" {
   type        = string
 }
 
+variable "cluster_endpoint" {
+  description = "EKS クラスタのエンドポイントを指定してください。"
+  type        = string
+}
+
+variable "cluster_ca" {
+  description = "EKS クラスタの CA データを指定してください。"
+  type        = string
+}
+
+variable "cluster_cidr" {
+  description = "EKS クラスタの CIDR を指定してください。"
+  type        = string
+}
+
+variable "eks_cluster_security_group_id" {
+  description = "EKS クラスタのセキュリティグループ ID を指定してください。"
+  type        = string
+}
+
 variable "ami_id" {
   description = "EKS ノードで使用する AMI ID を指定してください。"
   type        = string
