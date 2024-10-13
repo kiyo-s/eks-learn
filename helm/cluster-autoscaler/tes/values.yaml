@@ -1,5 +1,5 @@
 autoDiscovery:
-  clusterName: eks-learn-{{ .Environment.Name }}-infra
+  clusterName: eks-learn-tes-infra
 rbac:
   serviceAccount:
     annotations:
