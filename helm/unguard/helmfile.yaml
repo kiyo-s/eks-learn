@@ -4,6 +4,9 @@ environments:
 repositories:
   - name: bitnami
     url: https://charts.bitnami.com/bitnami
+  - name: unguard
+    url: ghcr.io/dynatrace-oss/unguard/chart
+    oci: true
 
 releases:
   ## https://github.com/bitnami/charts/tree/mariadb/11.5.7/bitnami/mariadb
@@ -17,3 +20,10 @@ releases:
       - common/mariadb.values.yaml
     secrets:
       - "{{ .Environment.Name }}/mariadb.secrets.yaml"
+  ## https://github.com/dynatrace-oss/unguard/tree/v0.9.3/chart
+  - name: unguard
+    namespace: unguard
+    createNamespace: false
+    chart: unguard/unguard
+    version: 0.9.3
+    atomic: true
