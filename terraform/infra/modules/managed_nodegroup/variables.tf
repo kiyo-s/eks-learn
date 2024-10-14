@@ -51,6 +51,11 @@ variable "ami_id" {
   type        = string
 }
 
+variable "node_group_name" {
+  description = "EKS ノードグループの名前を指定してください。"
+  type        = string
+}
+
 variable "node_resources" {
   description = "EKS ノードのリソースを指定してください。"
   type = object({

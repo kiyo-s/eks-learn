@@ -1,0 +1,6 @@
+autoDiscovery:
+  clusterName: eks-learn-tes-infra
+rbac:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::908027387380:role/eks-learn-tes-infra-irsa-cluster-autoscaler

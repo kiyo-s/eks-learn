@@ -1,7 +1,8 @@
 module "eks_node_group_system" {
   source = "./modules/managed_nodegroup"
 
-  resource_name_prefix = "system"
+  resource_name_prefix = "${local.name}-node-group-system"
+  node_group_name      = "system"
   tags                 = local.default_tags
 
   vpc_id     = aws_vpc.main.id
@@ -24,4 +25,24 @@ module "eks_node_group_system" {
   max_unavailable_percentage = var.max_unavailable_percentage
 
   is_enabled_cluster_autoscaler = true
+}
+
+data "aws_autoscaling_group" "eks_node_group_system" {
+  name = module.eks_node_group_system.autoscaling_group_name[0]
+}
+
+resource "aws_autoscaling_group_tag" "eks_node_group_system_cluster_autoscaler" {
+  for_each = {
+    "k8s.io/cluster-autoscaler/enabled" : "true",
+    "k8s.io/cluster-autoscaler/${aws_eks_cluster.main.name}" : "owned",
+  }
+
+  autoscaling_group_name = data.aws_autoscaling_group.eks_node_group_system.name
+
+  tag {
+    key   = each.key
+    value = each.value
+
+    propagate_at_launch = false
+  }
 }
