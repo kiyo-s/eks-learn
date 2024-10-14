@@ -1,8 +1,8 @@
-module "eks_node_group_system" {
+module "eks_node_group_buisiness" {
   source = "./modules/managed_nodegroup"
 
-  resource_name_prefix = "${local.name}-node-group-system"
-  node_group_name      = "system"
+  resource_name_prefix = "${local.name}-node-group-business"
+  node_group_name      = "business"
   tags                 = local.default_tags
 
   vpc_id     = aws_vpc.main.id
@@ -19,7 +19,7 @@ module "eks_node_group_system" {
   node_resources = var.node_resources_system
 
   k8s_node_labels = {
-    type = "system"
+    type = "business"
   }
 
   max_unavailable_percentage = var.max_unavailable_percentage
@@ -27,17 +27,17 @@ module "eks_node_group_system" {
   is_enabled_cluster_autoscaler = true
 }
 
-data "aws_autoscaling_group" "eks_node_group_system" {
-  name = module.eks_node_group_system.autoscaling_group_name[0]
+data "aws_autoscaling_group" "eks_node_group_buisiness" {
+  name = module.eks_node_group_buisiness.autoscaling_group_name[0]
 }
 
-resource "aws_autoscaling_group_tag" "eks_node_group_system_cluster_autoscaler" {
+resource "aws_autoscaling_group_tag" "eks_node_group_business_cluster_autoscaler" {
   for_each = {
     "k8s.io/cluster-autoscaler/enabled" : "true",
     "k8s.io/cluster-autoscaler/${aws_eks_cluster.main.name}" : "owned",
   }
 
-  autoscaling_group_name = data.aws_autoscaling_group.eks_node_group_system.name
+  autoscaling_group_name = data.aws_autoscaling_group.eks_node_group_buisiness.name
 
   tag {
     key   = each.key

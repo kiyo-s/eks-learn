@@ -43,6 +43,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_eks_node_group_buisiness"></a> [eks\_node\_group\_buisiness](#module\_eks\_node\_group\_buisiness) | ./modules/managed_nodegroup | n/a |
 | <a name="module_eks_node_group_system"></a> [eks\_node\_group\_system](#module\_eks\_node\_group\_system) | ./modules/managed_nodegroup | n/a |
 | <a name="module_irsa_cluster_autoscaler"></a> [irsa\_cluster\_autoscaler](#module\_irsa\_cluster\_autoscaler) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
 | <a name="module_irsa_coredns"></a> [irsa\_coredns](#module\_irsa\_coredns) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
@@ -53,6 +54,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 
 | Name | Type |
 |------|------|
+| [aws_autoscaling_group_tag.eks_node_group_business_cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/autoscaling_group_tag) | resource |
 | [aws_autoscaling_group_tag.eks_node_group_system_cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/autoscaling_group_tag) | resource |
 | [aws_eip.nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eip) | resource |
 | [aws_eks_access_entry.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_entry) | resource |
@@ -82,6 +84,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_subnet.private](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/subnet) | resource |
 | [aws_subnet.public](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/subnet) | resource |
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/vpc) | resource |
+| [aws_autoscaling_group.eks_node_group_buisiness](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/autoscaling_group) | data source |
 | [aws_autoscaling_group.eks_node_group_system](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/autoscaling_group) | data source |
 | [aws_iam_policy.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy_document.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/iam_policy_document) | data source |
