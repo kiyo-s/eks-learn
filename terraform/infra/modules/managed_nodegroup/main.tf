@@ -172,7 +172,7 @@ resource "aws_eks_node_group" "main" {
 resource "aws_autoscaling_group_tag" "cluster_autoscaler" {
   for_each = var.is_enabled_cluster_autoscaler ? {
     "k8s.io/cluster-autoscaler/enabled" : "true",
-    "k8s.io/cluster-autoscaler/${aws_eks_cluster.main.name}" : "owned",
+    "k8s.io/cluster-autoscaler/${var.eks_cluster_name}" : "owned",
   } : {}
 
   autoscaling_group_name = aws_eks_node_group.main.resources[0].autoscaling_groups[0].name
