@@ -16,7 +16,7 @@ module "eks_node_group_buisiness" {
 
   ami_id = var.ami_id
 
-  node_resources = var.node_resources_system
+  node_resources = var.node_resources_business
 
   k8s_node_labels = {
     type = "business"

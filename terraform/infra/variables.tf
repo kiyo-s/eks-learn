@@ -71,7 +71,7 @@ variable "ami_id" {
 }
 
 variable "node_resources_system" {
-  description = "EKS ノードのリソースを指定してください。"
+  description = "EKS ノード (system) のリソースを指定してください。"
   type = object({
     instance_type = string
     min_size      = number
@@ -83,6 +83,22 @@ variable "node_resources_system" {
     min_size      = 0
     max_size      = 5
     desired_size  = 1
+  }
+}
+
+variable "node_resources_business" {
+  description = "EKS ノード (business) のリソースを指定してください。"
+  type = object({
+    instance_type = string
+    min_size      = number
+    max_size      = number
+    desired_size  = number
+  })
+  default = {
+    instance_type = "m7i-flex.large"
+    min_size      = 0
+    max_size      = 5
+    desired_size  = 0
   }
 }
 
