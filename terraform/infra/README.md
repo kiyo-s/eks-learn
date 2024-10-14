@@ -54,8 +54,6 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 
 | Name | Type |
 |------|------|
-| [aws_autoscaling_group_tag.eks_node_group_business_cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/autoscaling_group_tag) | resource |
-| [aws_autoscaling_group_tag.eks_node_group_system_cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/autoscaling_group_tag) | resource |
 | [aws_eip.nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eip) | resource |
 | [aws_eks_access_entry.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_entry) | resource |
 | [aws_eks_access_policy_association.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_policy_association) | resource |
@@ -84,8 +82,6 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_subnet.private](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/subnet) | resource |
 | [aws_subnet.public](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/subnet) | resource |
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/vpc) | resource |
-| [aws_autoscaling_group.eks_node_group_buisiness](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/autoscaling_group) | data source |
-| [aws_autoscaling_group.eks_node_group_system](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/autoscaling_group) | data source |
 | [aws_iam_policy.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy_document.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.eks_cluster_assume_role](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/data-sources/iam_policy_document) | data source |

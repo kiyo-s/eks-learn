@@ -26,23 +26,3 @@ module "eks_node_group_buisiness" {
 
   is_enabled_cluster_autoscaler = true
 }
-
-data "aws_autoscaling_group" "eks_node_group_buisiness" {
-  name = module.eks_node_group_buisiness.autoscaling_group_name[0]
-}
-
-resource "aws_autoscaling_group_tag" "eks_node_group_business_cluster_autoscaler" {
-  for_each = {
-    "k8s.io/cluster-autoscaler/enabled" : "true",
-    "k8s.io/cluster-autoscaler/${aws_eks_cluster.main.name}" : "owned",
-  }
-
-  autoscaling_group_name = data.aws_autoscaling_group.eks_node_group_buisiness.name
-
-  tag {
-    key   = each.key
-    value = each.value
-
-    propagate_at_launch = false
-  }
-}
