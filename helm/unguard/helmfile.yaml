@@ -10,7 +10,7 @@ releases:
   - name: unguard-db
     namespace: unguard
     createNamespace: true
-    chart: unguard-mariadb bitnami/mariadb
+    chart: bitnami/mariadb
     version: 11.5.7
     atomic: true
     values:
