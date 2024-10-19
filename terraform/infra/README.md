@@ -68,8 +68,6 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_service_policy](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_vpc_resource_controller_policy](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_internet_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/internet_gateway) | resource |
-| [aws_kms_alias.sops](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/kms_alias) | resource |
-| [aws_kms_key.sops](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/kms_key) | resource |
 | [aws_nat_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/nat_gateway) | resource |
 | [aws_route.private_to_nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/route) | resource |
 | [aws_route.public_internet_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/route) | resource |
