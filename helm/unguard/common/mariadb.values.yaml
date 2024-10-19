@@ -35,7 +35,7 @@ auth:
   ## @param auth.database Name for a custom database to create
   ## ref: https://github.com/bitnami/containers/blob/main/bitnami/mariadb/README.md#creating-a-database-on-first-run
   ##
-  database: unguard
+  database: my_database
 
 ## @section MariaDB Primary parameters
 ##

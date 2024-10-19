@@ -1,0 +1,5 @@
+userAuthService:
+  deployment:
+    container:
+      env:
+        MARIADB_SERVICE: unguard-db-mariadb.unguard.svc.cluster.local
