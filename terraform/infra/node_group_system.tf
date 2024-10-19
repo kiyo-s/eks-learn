@@ -26,3 +26,12 @@ module "eks_node_group_system" {
 
   is_enabled_cluster_autoscaler = true
 }
+
+resource "aws_security_group_rule" "ingress_node_group_biz" {
+  type                     = "ingress"
+  from_port                = 0
+  to_port                  = 0
+  protocol                 = "-1"
+  security_group_id        = module.eks_node_group_system.security_group_ids[0]
+  source_security_group_id = module.eks_node_group_buisiness.security_group_ids[0]
+}

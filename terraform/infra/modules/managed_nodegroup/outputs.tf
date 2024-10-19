@@ -3,7 +3,7 @@ output "aws_iam_role_arn" {
 }
 
 output "security_group_ids" {
-  value = aws_launch_template.main.network_interfaces[*].security_groups
+  value = flatten([for nic in aws_launch_template.main.network_interfaces : nic.security_groups])
 }
 
 output "autoscaling_group_name" {

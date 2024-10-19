@@ -79,6 +79,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_route_table_association.public](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/route_table_association) | resource |
 | [aws_security_group.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/security_group) | resource |
 | [aws_security_group_rule.eks_cluster_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_node_group_biz](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/security_group_rule) | resource |
 | [aws_subnet.private](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/subnet) | resource |
 | [aws_subnet.public](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/subnet) | resource |
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/vpc) | resource |
