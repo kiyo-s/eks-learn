@@ -27,8 +27,6 @@ releases:
     chart: unguard/unguard
     version: 0.9.3
     atomic: true
-    values:
-      - common/unguard.values.yaml
     secrets:
       - "{{ .Environment.Name }}/unguard.secrets.yaml"
     strategicMergePatches:
