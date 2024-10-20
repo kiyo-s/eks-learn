@@ -31,3 +31,18 @@ releases:
       - common/unguard.values.yaml
     secrets:
       - "{{ .Environment.Name }}/unguard.secrets.yaml"
+    strategicMergePatches:
+      - apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: unguard-like-service
+        spec:
+          template:
+            spec:
+              containers:
+                - name: like-service
+                  env:
+                    - name: DB_HOST
+                      value: unguard-db-mariadb
+                    - name: DB_PORT
+                      value: "3306"
