@@ -1,8 +1,8 @@
-module "eks_node_group_system" {
+module "eks_node_group_buisiness" {
   source = "./modules/managed_nodegroup"
 
-  resource_name_prefix = "${local.name}-node-group-system"
-  node_group_name      = "system"
+  resource_name_prefix = "${local.name}-node-group-business"
+  node_group_name      = "business"
   tags                 = local.default_tags
 
   vpc_id     = aws_vpc.main.id
@@ -16,10 +16,10 @@ module "eks_node_group_system" {
 
   ami_id = var.ami_id
 
-  node_resources = var.node_resources_system
+  node_resources = var.node_resources_business
 
   k8s_node_labels = {
-    type = "system"
+    type = "business"
   }
 
   max_unavailable_percentage = var.max_unavailable_percentage
@@ -27,11 +27,11 @@ module "eks_node_group_system" {
   is_enabled_cluster_autoscaler = true
 }
 
-resource "aws_security_group_rule" "ingress_node_group_biz" {
+resource "aws_security_group_rule" "ingress_node_group_system" {
   type                     = "ingress"
   from_port                = 0
   to_port                  = 0
   protocol                 = "-1"
-  security_group_id        = module.eks_node_group_system.security_group_ids[0]
-  source_security_group_id = module.eks_node_group_buisiness.security_group_ids[0]
+  security_group_id        = module.eks_node_group_buisiness.security_group_ids[0]
+  source_security_group_id = module.eks_node_group_system.security_group_ids[0]
 }

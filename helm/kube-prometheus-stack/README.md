@@ -1,5 +1,7 @@
 # kube-prometheus-stack
 
+OSS として公開されている kube-prometheus-stack の helm chart を使用して Prometheus Operator をデプロイする
+
 ## How to install kube-prometheus-stack
 
 下記のコマンドにより Prometheus Operator の CRD をインストールする。
