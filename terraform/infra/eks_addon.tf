@@ -89,7 +89,7 @@ resource "aws_eks_addon" "ebs_csi_driver" {
       }
     },
   })
-  service_account_role_arn = module.irsa_coredns.iam_role_arn
+  service_account_role_arn = module.irsa_ebs_csi_driver.iam_role_arn
 }
 
 resource "kubernetes_storage_class_v1" "ebs_gp3" {
