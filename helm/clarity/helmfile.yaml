@@ -16,3 +16,5 @@ releases:
     atomic: true
     values:
       - common/values.yaml
+    secrets:
+      - "{{ .Environment.Name }}/secrets.yaml"
