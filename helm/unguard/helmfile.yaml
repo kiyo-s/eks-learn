@@ -23,7 +23,7 @@ releases:
   ## https://github.com/dynatrace-oss/unguard/tree/v0.9.3/chart
   - name: unguard
     namespace: unguard
-    createNamespace: false
+    createNamespace: true
     chart: unguard/unguard
     version: 0.9.3
     atomic: true
