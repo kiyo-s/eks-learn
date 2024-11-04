@@ -57,6 +57,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 
 | Name | Type |
 |------|------|
+| [aws_autoscaling_attachment.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/autoscaling_attachment) | resource |
 | [aws_eip.nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eip) | resource |
 | [aws_eks_access_entry.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_access_entry) | resource |
 | [aws_eks_access_policy_association.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_access_policy_association) | resource |
@@ -73,9 +74,12 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_vpc_resource_controller_policy](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_internet_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/internet_gateway) | resource |
 | [aws_lb.system](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/lb) | resource |
+| [aws_lb_listener.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/lb_listener) | resource |
+| [aws_lb_target_group.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/lb_target_group) | resource |
 | [aws_nat_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/nat_gateway) | resource |
 | [aws_route.private_to_nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route) | resource |
 | [aws_route.public_internet_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route) | resource |
+| [aws_route53_record.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route53_record) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table) | resource |
 | [aws_route_table.public](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table) | resource |
 | [aws_route_table_association.private](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table_association) | resource |
@@ -85,6 +89,9 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_security_group_rule.eks_cluster_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_node_group_biz](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_node_group_system](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_system_lb](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.system_lb_egress_3shake](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.system_lb_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_subnet.private](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/subnet) | resource |
 | [aws_subnet.public](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/subnet) | resource |
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/vpc) | resource |
@@ -95,6 +102,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_iam_policy_document.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.eks_cluster_assume_role](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_roles.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_roles) | data source |
+| [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/route53_zone) | data source |
 | [tls_certificate.eks](https://registry.terraform.io/providers/hashicorp/tls/4.0.6/docs/data-sources/certificate) | data source |
 
 ## Inputs
@@ -110,6 +118,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | <a name="input_private_subnet_configs"></a> [private\_subnet\_configs](#input\_private\_subnet\_configs) | プライベートサブネットの CIDR ブロックを指定してください。 | <pre>list(object({<br/>    cidr_block = string<br/>    az         = string<br/>  }))</pre> | <pre>[<br/>  {<br/>    "az": "ap-northeast-1a",<br/>    "cidr_block": "172.16.2.0/23"<br/>  },<br/>  {<br/>    "az": "ap-northeast-1c",<br/>    "cidr_block": "172.16.4.0/23"<br/>  }<br/>]</pre> | no |
 | <a name="input_public_subnet_configs"></a> [public\_subnet\_configs](#input\_public\_subnet\_configs) | パブリックサブネットの CIDR ブロックを指定してください。 | <pre>list(object({<br/>    cidr_block = string<br/>    az         = string<br/>  }))</pre> | <pre>[<br/>  {<br/>    "az": "ap-northeast-1a",<br/>    "cidr_block": "172.16.0.0/24"<br/>  },<br/>  {<br/>    "az": "ap-northeast-1c",<br/>    "cidr_block": "172.16.1.0/24"<br/>  }<br/>]</pre> | no |
 | <a name="input_region"></a> [region](#input\_region) | リソースを作成する AWS のリージョンを指定してください。 | `string` | `"ap-northeast-1"` | no |
+| <a name="input_route_53_zone_name"></a> [route\_53\_zone\_name](#input\_route\_53\_zone\_name) | DNS レコードを作成する Route 53 ゾーン名を指定してください。 | `string` | `null` | no |
 | <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | VPC の CIDR ブロックを指定してください。 | `string` | `"172.16.0.0/16"` | no |
 
 ## Outputs

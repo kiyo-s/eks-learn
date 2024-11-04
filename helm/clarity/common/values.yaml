@@ -13,6 +13,10 @@ freshclamMirror:
 gateway:
   nodeSelector:
     "eks.amazonaws.com/nodegroup": "system"
+  service:
+    type: NodePort
+    nodePorts:
+      http: 30003
 
 grypeServer:
   nodeSelector:

@@ -56,6 +56,12 @@ EOT
   ]
 }
 
+variable "route_53_zone_name" {
+  description = "DNS レコードを作成する Route 53 ゾーン名を指定してください。"
+  type        = string
+  default     = null
+}
+
 // EKS
 variable "eks_cluster_access_cidrs" {
   description = <<EOT

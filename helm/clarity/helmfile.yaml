@@ -13,7 +13,7 @@ releases:
     createNamespace: true
     chart: openclarity/openclarity
     version: 1.1.0
-    atomic: true
+    atomic: false
     values:
       - common/values.yaml
     secrets:
