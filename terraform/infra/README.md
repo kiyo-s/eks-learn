@@ -47,6 +47,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | <a name="module_eks_node_group_system"></a> [eks\_node\_group\_system](#module\_eks\_node\_group\_system) | ./modules/managed_nodegroup | n/a |
 | <a name="module_irsa_cluster_autoscaler"></a> [irsa\_cluster\_autoscaler](#module\_irsa\_cluster\_autoscaler) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
 | <a name="module_irsa_coredns"></a> [irsa\_coredns](#module\_irsa\_coredns) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
+| <a name="module_irsa_ebs_csi_driver"></a> [irsa\_ebs\_csi\_driver](#module\_irsa\_ebs\_csi\_driver) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
 | <a name="module_irsa_kube_proxy"></a> [irsa\_kube\_proxy](#module\_irsa\_kube\_proxy) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
 | <a name="module_irsa_vpc_cni"></a> [irsa\_vpc\_cni](#module\_irsa\_vpc\_cni) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 5.46.0 |
 
@@ -58,6 +59,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_eks_access_entry.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_entry) | resource |
 | [aws_eks_access_policy_association.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_access_policy_association) | resource |
 | [aws_eks_addon.coredns](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_addon) | resource |
+| [aws_eks_addon.ebs_csi_driver](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_addon) | resource |
 | [aws_eks_addon.kube_proxy](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_addon) | resource |
 | [aws_eks_addon.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_addon) | resource |
 | [aws_eks_cluster.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/eks_cluster) | resource |
@@ -78,6 +80,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_security_group.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/security_group) | resource |
 | [aws_security_group_rule.eks_cluster_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_node_group_biz](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_node_group_system](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/security_group_rule) | resource |
 | [aws_subnet.private](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/subnet) | resource |
 | [aws_subnet.public](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/subnet) | resource |
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.71.0/docs/resources/vpc) | resource |

@@ -58,3 +58,31 @@ resource "aws_eks_addon" "coredns" {
   configuration_values     = "{\"nodeSelector\":{\"eks.amazonaws.com/nodegroup\":\"system\"}}"
   service_account_role_arn = module.irsa_coredns.iam_role_arn
 }
+
+// amazon-ebs-csi-driver (for PostgreSQL)
+module "irsa_ebs_csi_driver" {
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+  version                       = "5.46.0"
+  create_role                   = true
+  role_name                     = "${local.name}-irsa-ebs-csi-driver"
+  provider_url                  = aws_eks_cluster.main.identity[0].oidc[0].issuer
+  oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
+}
+
+resource "aws_eks_addon" "ebs_csi_driver" {
+  depends_on = [
+    module.eks_node_group_system,
+  ]
+
+  cluster_name  = aws_eks_cluster.main.name
+  addon_name    = "aws-ebs-csi-driver"
+  addon_version = "v1.36.0-eksbuild.1"
+  configuration_values = jsonencode({
+    controller = {
+      nodeSelector = {
+        "eks.amazonaws.com/nodegroup" = "system"
+      }
+    },
+  })
+  service_account_role_arn = module.irsa_coredns.iam_role_arn
+}
