@@ -72,6 +72,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_service_policy](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_vpc_resource_controller_policy](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_internet_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/internet_gateway) | resource |
+| [aws_lb.system](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/lb) | resource |
 | [aws_nat_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/nat_gateway) | resource |
 | [aws_route.private_to_nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route) | resource |
 | [aws_route.public_internet_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route) | resource |
@@ -80,6 +81,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_route_table_association.private](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table_association) | resource |
 | [aws_route_table_association.public](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table_association) | resource |
 | [aws_security_group.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group) | resource |
+| [aws_security_group.system_lb](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group) | resource |
 | [aws_security_group_rule.eks_cluster_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_node_group_biz](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_node_group_system](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
