@@ -167,6 +167,12 @@ resource "aws_eks_node_group" "main" {
   labels = var.k8s_node_labels
 
   tags = var.tags
+
+  lifecycle {
+    ignore_changes = [
+      scaling_config[0].desired_size,
+    ]
+  }
 }
 
 resource "aws_autoscaling_group_tag" "cluster_autoscaler" {
