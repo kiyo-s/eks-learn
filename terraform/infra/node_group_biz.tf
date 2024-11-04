@@ -35,22 +35,3 @@ resource "aws_security_group_rule" "ingress_node_group_system" {
   security_group_id        = module.eks_node_group_buisiness.security_group_ids[0]
   source_security_group_id = module.eks_node_group_system.security_group_ids[0]
 }
-
-resource "kubernetes_storage_class_v1" "ebs_gp3" {
-  metadata {
-    name = "ebs-gp3"
-  }
-
-  // https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/examples/kubernetes/storageclass/manifests/storageclass.yaml
-  storage_provisioner    = "ebs.csi.aws.com"
-  reclaim_policy         = "Delete"
-  allow_volume_expansion = true
-  volume_binding_mode    = "WaitForFirstConsumer"
-
-  // https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/parameters.md
-  parameters = {
-    "csi.storage.k8s.io/fstype" = "ext4"
-    type                        = "gp3"
-    encrypted                   = "true"
-  }
-}
