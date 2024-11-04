@@ -1,0 +1,18 @@
+environments:
+  {{ .Environment.Name }}:
+
+repositories:
+  - name: openclarity
+    url: ghcr.io/openclarity/charts
+    oci: true
+
+releases:
+  ## https://github.com/bitnami/charts/tree/mariadb/11.5.7/bitnami/mariadb
+  - name: openclarity
+    namespace: clarity
+    createNamespace: true
+    chart: openclarity/openclarity
+    version: 1.1.0
+    atomic: true
+    values:
+      - common/values.yaml

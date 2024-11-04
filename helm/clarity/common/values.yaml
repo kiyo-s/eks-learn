@@ -1,0 +1,51 @@
+apiserver:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+exploitDBServer:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+freshclamMirror:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+gateway:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+grypeServer:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+orchestrator:
+  provider: kubernetes
+  serviceAccount:
+    automountServiceAccountToken: true
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+swaggerUI:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+trivyServer:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+ui:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+uibackend:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+yaraRuleServer:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+postgresql:
+  primary:
+    nodeSelector:
+      "eks.amazonaws.com/nodegroup": "system"
