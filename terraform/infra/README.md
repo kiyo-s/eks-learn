@@ -88,6 +88,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/vpc) | resource |
 | [kubernetes_storage_class_v1.ebs_gp3](https://registry.terraform.io/providers/hashicorp/kubernetes/2.33.0/docs/resources/storage_class_v1) | resource |
 | [aws_eks_cluster_auth.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/eks_cluster_auth) | data source |
+| [aws_iam_policy.csi_driver](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy_document.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.eks_cluster_assume_role](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy_document) | data source |

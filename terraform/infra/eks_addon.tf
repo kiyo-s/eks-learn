@@ -60,12 +60,17 @@ resource "aws_eks_addon" "coredns" {
 }
 
 // amazon-ebs-csi-driver (for PostgreSQL)
+data "aws_iam_policy" "csi_driver" {
+  arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+}
+
 module "irsa_ebs_csi_driver" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
   version                       = "5.46.0"
   create_role                   = true
   role_name                     = "${local.name}-irsa-ebs-csi-driver"
   provider_url                  = aws_eks_cluster.main.identity[0].oidc[0].issuer
+  role_policy_arns              = [data.aws_iam_policy.csi_driver.arn]
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
 }
 
