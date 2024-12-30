@@ -39,6 +39,7 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 5.74.0 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.33.0 |
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | 4.0.6 |
 
 ## Modules
@@ -90,12 +91,14 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | [aws_security_group_rule.ingress_node_group_biz](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_node_group_system](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_system_lb](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.system_lb_egress_3shake](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.system_lb_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.system_lb_ingress](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
 | [aws_subnet.private](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/subnet) | resource |
 | [aws_subnet.public](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/subnet) | resource |
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/vpc) | resource |
 | [kubernetes_storage_class_v1.ebs_gp3](https://registry.terraform.io/providers/hashicorp/kubernetes/2.33.0/docs/resources/storage_class_v1) | resource |
+| [terraform_data.install_crds](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [terraform_data.update_k8s_config](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [aws_eks_cluster_auth.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/eks_cluster_auth) | data source |
 | [aws_iam_policy.csi_driver](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy) | data source |
