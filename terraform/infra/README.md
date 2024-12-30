@@ -28,17 +28,17 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.74.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.82.2 |
 | <a name="requirement_cloudinit"></a> [cloudinit](#requirement\_cloudinit) | 2.3.5 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.33.0 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.35.1 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | 4.0.6 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.74.0 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.33.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.82.2 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.35.1 |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | 4.0.6 |
 
@@ -58,54 +58,54 @@ ENV=dev && terraform apply -var-file="${ENV}/terraform.tfvars"
 
 | Name | Type |
 |------|------|
-| [aws_autoscaling_attachment.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/autoscaling_attachment) | resource |
-| [aws_eip.nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eip) | resource |
-| [aws_eks_access_entry.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_access_entry) | resource |
-| [aws_eks_access_policy_association.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_access_policy_association) | resource |
-| [aws_eks_addon.coredns](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_addon) | resource |
-| [aws_eks_addon.ebs_csi_driver](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_addon) | resource |
-| [aws_eks_addon.kube_proxy](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_addon) | resource |
-| [aws_eks_addon.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_addon) | resource |
-| [aws_eks_cluster.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/eks_cluster) | resource |
-| [aws_iam_openid_connect_provider.eks](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_openid_connect_provider) | resource |
-| [aws_iam_policy.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_policy) | resource |
-| [aws_iam_role.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_cluster_policy](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_service_policy](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_vpc_resource_controller_policy](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_internet_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/internet_gateway) | resource |
-| [aws_lb.system](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/lb) | resource |
-| [aws_lb_listener.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/lb_listener) | resource |
-| [aws_lb_target_group.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/lb_target_group) | resource |
-| [aws_nat_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/nat_gateway) | resource |
-| [aws_route.private_to_nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route) | resource |
-| [aws_route.public_internet_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route) | resource |
-| [aws_route53_record.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route53_record) | resource |
-| [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table) | resource |
-| [aws_route_table.public](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table) | resource |
-| [aws_route_table_association.private](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table_association) | resource |
-| [aws_route_table_association.public](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/route_table_association) | resource |
-| [aws_security_group.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group) | resource |
-| [aws_security_group.system_lb](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group) | resource |
-| [aws_security_group_rule.eks_cluster_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.ingress_node_group_biz](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.ingress_node_group_system](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.ingress_system_lb](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.system_lb_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.system_lb_ingress](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/security_group_rule) | resource |
-| [aws_subnet.private](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/subnet) | resource |
-| [aws_subnet.public](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/subnet) | resource |
-| [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/resources/vpc) | resource |
-| [kubernetes_storage_class_v1.ebs_gp3](https://registry.terraform.io/providers/hashicorp/kubernetes/2.33.0/docs/resources/storage_class_v1) | resource |
+| [aws_autoscaling_attachment.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/autoscaling_attachment) | resource |
+| [aws_eip.nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/eip) | resource |
+| [aws_eks_access_entry.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/eks_access_entry) | resource |
+| [aws_eks_access_policy_association.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/eks_access_policy_association) | resource |
+| [aws_eks_addon.coredns](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/eks_addon) | resource |
+| [aws_eks_addon.ebs_csi_driver](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/eks_addon) | resource |
+| [aws_eks_addon.kube_proxy](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/eks_addon) | resource |
+| [aws_eks_addon.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/eks_addon) | resource |
+| [aws_eks_cluster.main](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/eks_cluster) | resource |
+| [aws_iam_openid_connect_provider.eks](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/iam_openid_connect_provider) | resource |
+| [aws_iam_policy.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/iam_policy) | resource |
+| [aws_iam_role.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_cluster_policy](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_service_policy](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.eks_cluster_amazon_eks_vpc_resource_controller_policy](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_internet_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/internet_gateway) | resource |
+| [aws_lb.system](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/lb) | resource |
+| [aws_lb_listener.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/lb_listener) | resource |
+| [aws_lb_target_group.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/lb_target_group) | resource |
+| [aws_nat_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/nat_gateway) | resource |
+| [aws_route.private_to_nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/route) | resource |
+| [aws_route.public_internet_gateway](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/route) | resource |
+| [aws_route53_record.openclarity](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/route53_record) | resource |
+| [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/route_table) | resource |
+| [aws_route_table.public](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/route_table) | resource |
+| [aws_route_table_association.private](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/route_table_association) | resource |
+| [aws_route_table_association.public](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/route_table_association) | resource |
+| [aws_security_group.eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/security_group) | resource |
+| [aws_security_group.system_lb](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/security_group) | resource |
+| [aws_security_group_rule.eks_cluster_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_node_group_biz](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_node_group_system](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_system_lb](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.system_lb_egress_all](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.system_lb_ingress](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/security_group_rule) | resource |
+| [aws_subnet.private](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/subnet) | resource |
+| [aws_subnet.public](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/subnet) | resource |
+| [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/resources/vpc) | resource |
+| [kubernetes_storage_class_v1.ebs_gp3](https://registry.terraform.io/providers/hashicorp/kubernetes/2.35.1/docs/resources/storage_class_v1) | resource |
 | [terraform_data.install_crds](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.update_k8s_config](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
-| [aws_eks_cluster_auth.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/eks_cluster_auth) | data source |
-| [aws_iam_policy.csi_driver](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy) | data source |
-| [aws_iam_policy.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy) | data source |
-| [aws_iam_policy_document.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.eks_cluster_assume_role](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_roles.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/iam_roles) | data source |
-| [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/5.74.0/docs/data-sources/route53_zone) | data source |
+| [aws_eks_cluster_auth.main](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/data-sources/eks_cluster_auth) | data source |
+| [aws_iam_policy.csi_driver](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/data-sources/iam_policy) | data source |
+| [aws_iam_policy.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/data-sources/iam_policy) | data source |
+| [aws_iam_policy_document.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.eks_cluster_assume_role](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_roles.administrator](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/data-sources/iam_roles) | data source |
+| [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/5.82.2/docs/data-sources/route53_zone) | data source |
 | [tls_certificate.eks](https://registry.terraform.io/providers/hashicorp/tls/4.0.6/docs/data-sources/certificate) | data source |
 
 ## Inputs
