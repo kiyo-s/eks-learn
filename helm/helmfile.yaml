@@ -30,7 +30,7 @@ releases:
     namespace: clarity
     createNamespace: true
     chart: openclarity/openclarity
-    version: 1.1.0
+    version: 1.1.1
     atomic: false
     values:
       - common/values/openclarity.yaml
