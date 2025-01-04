@@ -1,0 +1,64 @@
+apiserver:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+exploitDBServer:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+freshclamMirror:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+gateway:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+  service:
+    type: NodePort
+    nodePorts:
+      http: 30003
+
+grypeServer:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+orchestrator:
+  provider: kubernetes
+  serviceAccount:
+    automountServiceAccountToken: true
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+swaggerUI:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+trivyServer:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+ui:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+uibackend:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+yaraRuleServer:
+  nodeSelector:
+    "eks.amazonaws.com/nodegroup": "system"
+
+postgresql:
+  primary:
+    nodeSelector:
+      "eks.amazonaws.com/nodegroup": "system"
+    resources:
+      limits:
+        cpu: 750m
+        ephemeral-storage: 2Gi
+        memory: 4Gi
+      requests:
+        cpu: 500m
+        ephemeral-storage: 50Mi
+        memory: 512Mi

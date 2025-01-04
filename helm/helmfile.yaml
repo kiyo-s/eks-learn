@@ -1,0 +1,83 @@
+environments:
+  {{ .Environment.Name }}:
+
+repositories:
+  - name: autoscaler
+    url: https://kubernetes.github.io/autoscaler
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+  - name: openclarity
+    url: ghcr.io/openclarity/charts
+    oci: true
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+  - name: unguard
+    url: ghcr.io/dynatrace-oss/unguard/chart
+    oci: true
+
+releases:
+  - name: cluster-autoscaler
+    namespace: cluster-autoscaler
+    createNamespace: true
+    chart: autoscaler/cluster-autoscaler
+    version: 9.44.0
+    atomic: true
+    values:
+      - common/values/cluster-autoscaler.yaml
+      - "{{ .Environment.Name }}/values/cluster-autoscaler.yaml"
+  ## https://github.com/bitnami/charts/tree/mariadb/11.5.7/bitnami/mariadb
+  - name: openclarity
+    namespace: clarity
+    createNamespace: true
+    chart: openclarity/openclarity
+    version: 1.1.1
+    atomic: true
+    values:
+      - common/values/openclarity.yaml
+    secrets:
+      - "{{ .Environment.Name }}/secrets/openclarity.yaml"
+  - name: prometheus
+    namespace: prometheus
+    createNamespace: true
+    chart: prometheus-community/kube-prometheus-stack
+    version: 67.5.0
+    atomic: true
+    values:
+      - common/values/kube-prometheus-stack.yaml
+    secrets:
+      - "{{ .Environment.Name }}/secrets/kube-prometheus-stack.yaml"
+  ## https://github.com/bitnami/charts/tree/mariadb/11.5.7/bitnami/mariadb
+  - name: unguard-db
+    namespace: unguard
+    createNamespace: true
+    chart: bitnami/mariadb
+    version: 11.5.7
+    atomic: true
+    values:
+      - common/values/unguard-mariadb.yaml
+    secrets:
+      - "{{ .Environment.Name }}/secrets/unguard-mariadb.yaml"
+  ## https://github.com/dynatrace-oss/unguard/tree/v0.9.3/chart
+  - name: unguard
+    namespace: unguard
+    createNamespace: true
+    chart: unguard/unguard
+    version: 0.9.3
+    atomic: true
+    secrets:
+      - "{{ .Environment.Name }}/secrets/unguard.yaml"
+    strategicMergePatches:
+      - apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: unguard-like-service
+        spec:
+          template:
+            spec:
+              containers:
+                - name: like-service
+                  env:
+                    - name: DB_HOST
+                      value: unguard-db-mariadb
+                    - name: DB_PORT
+                      value: "3306"
