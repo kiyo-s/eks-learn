@@ -35,7 +35,7 @@ resource "aws_iam_policy" "cluster_autoscaler" {
 
 module "irsa_cluster_autoscaler" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "5.46.0"
+  version                       = "5.60.0"
   create_role                   = true
   role_name                     = "${local.name}-irsa-cluster-autoscaler"
   provider_url                  = aws_eks_cluster.main.identity[0].oidc[0].issuer
