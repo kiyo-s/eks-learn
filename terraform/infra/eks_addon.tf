@@ -5,7 +5,7 @@ data "aws_iam_policy" "vpc_cni" {
 
 module "irsa_vpc_cni" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "5.46.0"
+  version                       = "5.60.0"
   create_role                   = true
   role_name                     = "${local.name}-irsa-vpc-cni"
   provider_url                  = aws_eks_cluster.main.identity[0].oidc[0].issuer
@@ -23,7 +23,7 @@ resource "aws_eks_addon" "vpc_cni" {
 // kube-proxy
 module "irsa_kube_proxy" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "5.46.0"
+  version                       = "5.60.0"
   create_role                   = true
   role_name                     = "${local.name}-irsa-kube-proxy"
   provider_url                  = aws_eks_cluster.main.identity[0].oidc[0].issuer
@@ -40,7 +40,7 @@ resource "aws_eks_addon" "kube_proxy" {
 // coredns
 module "irsa_coredns" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "5.46.0"
+  version                       = "5.60.0"
   create_role                   = true
   role_name                     = "${local.name}-irsa-coredns"
   provider_url                  = aws_eks_cluster.main.identity[0].oidc[0].issuer
@@ -66,7 +66,7 @@ data "aws_iam_policy" "csi_driver" {
 
 module "irsa_ebs_csi_driver" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "5.46.0"
+  version                       = "5.60.0"
   create_role                   = true
   role_name                     = "${local.name}-irsa-ebs-csi-driver"
   provider_url                  = aws_eks_cluster.main.identity[0].oidc[0].issuer
